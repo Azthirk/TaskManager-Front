@@ -1,16 +1,16 @@
 {
   "compilerOptions": {
-    "target": "ES6",                      // Establece el estándar de JS de salida
-    "module": "ESNext",                   // Usa módulos ES (más compatible con React)
-    "jsx": "react-jsx",                   // Configuración adecuada para React 17+
-    "strict": true,                        // Habilita todas las verificaciones estrictas de TypeScript
-    "esModuleInterop": true,              // Permite la importación de módulos comunes
-    "moduleResolution": "node",           // Resolución de módulos al estilo Node.js
-    "resolveJsonModule": true,            // Permite importar archivos JSON
-    "skipLibCheck": true,                 // Omite la comprobación de tipos de las librerías
+    "target": "ES6",                      // Sets the output JS standard
+    "module": "ESNext",                   // Use ES modules (more React friendly)
+    "jsx": "react-jsx",                   // Proper configuration for React 17+
+    "strict": true,                       // Enable all TypeScript strict checks
+    "esModuleInterop": true,              // Allow importing common modules
+    "moduleResolution": "node",           // Node.js style module resolution
+    "resolveJsonModule": true,            // Allow importing JSON files
+    "skipLibCheck": true,                 // Skip type checking for libraries
     "forceConsistentCasingInFileNames": true
   },
   "include": [
-    "src/**/*"                             // Asegúrate de incluir todos los archivos en la carpeta `src`
+    "src/**/*"                             // Make sure to include all files in the `src` folder
   ]
 }
