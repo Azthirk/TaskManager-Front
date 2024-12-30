@@ -48,12 +48,12 @@ In the `package.json` file, you will find several scripts that you can run:
 - `test`: Runs tests.
 
 ## Folder Structure
-- `src/`: Contains all the source code for the project.
-- `pages/`: Reusable components such as cards, modal, and form.
-- `redux/`: Redux configuration for state management.
-- `assets/svg/`: svg files.
 - `public/`: Static files.
-- `test/`: test app.
+- `src/`: Contains all the source code for the project.
+- `src/pages/`: Reusable components such as cards, modal, and form.
+- `src/redux/`: Redux configuration for state management.
+- `src/assets/svg/`: svg files.
+- `src/test/`: test app.
 
 ## Preview
 ![Captura de pantalla 2024-12-30 050007](https://github.com/user-attachments/assets/97ac9901-1f6e-448d-8bbe-3a75c8ccfb72)
