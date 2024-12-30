@@ -12,7 +12,7 @@ Follow these steps to install and run the project in your local environment:
 ### 1. Clone the repository
 ```bash
 # Clone the repository
-$ git clone <REPOSITORY_URL>
+$ git clone [<REPOSITORY_URL>](https://github.com/Azthirk/TaskManager-Front.git)
 $ cd front
 ```
 
