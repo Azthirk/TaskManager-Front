@@ -5,7 +5,7 @@ import { RootState } from '../../redux/reducers';
 import { Action, AppDispatch, ModalState, TaskBodyProps } from '../../redux/types/types';
 import { FaSpinner } from 'react-icons/fa';
 import Header from '../components/header/header';
-import TaskCard from '../components/card/card';
+import TaskCard from '../components/task-card/taskCard';
 import Pagination from '../components/pagination/pagination'; 
 import NoResults from '../components/notResults/notResults'; 
 import Modal from '../components/modal/modal'; 
@@ -15,6 +15,7 @@ const HomeComponent = () => {
   const dispatch = useDispatch<AppDispatch>();
   const [filter, setFilter] = useState('');
   const [page, setPage] = useState(1);
+  const [loader, setLoader] = useState(false);
   const [modalState, setModalState] = useState<ModalState>({
     isOpen: false,
     content: null,
@@ -27,7 +28,8 @@ const HomeComponent = () => {
   const hasData = info?.data && info.data?.length > 0;
 
   useEffect(() => {
-    dispatch(getData(page, filter));
+    setLoader(true); 
+    dispatch(getData(page, filter)).finally(() => setLoader(false)); 
   }, [dispatch, filter, page]);
 
   const closeModal = () => setModalState({ ...modalState, isOpen: false });
@@ -111,13 +113,15 @@ const HomeComponent = () => {
   
 
   const handleAsyncAction = async (action: Function, errorMessage: string) => {
+    setLoader(true);
     try {
       await dispatch(action());
-      dispatch(getData(page, filter));
+      await dispatch(getData(page, filter));
       closeModal();
     } catch (error) {
       modalError(errorMessage, error);
     }
+    setLoader(false);
   };
   
   if(error) return (
@@ -135,34 +139,40 @@ const HomeComponent = () => {
   return (
     <div>
       <Header onFilterChange={handleFilterChange} onEditClick={handleCreateClick}/>
-      <div className="flex w-full my-4 items-center justify-center flex-wrap">
-        <div className="w-full flex-wrap justify-center flex gap-4 items-center mx-4">
-          {hasData ? (
-            info.data?.map((e: TaskBodyProps, index: number) => (
-              <TaskCard
-                key={e._id || index}
-                title={e.title}
-                status={e.completed}
-                createdAt={e.createdAt}
-                onCheckClick={() => handleCheckChange(e)}
-                onEditClick={() => handleEditClick(e)}
-                onDeleteClick={() => handleDeleteClick(e)}
-                description={e.description}
-              />
-            ))
-          ) : (
-            <NoResults />
+      { loader || !hasData ? 
+        <div className="flex justify-center items-center h-[250px]">
+          <FaSpinner className="animate-spin text-xl" />
+        </div> 
+      : 
+        <div className="flex w-full my-4 items-center justify-center flex-wrap">
+          <div className="w-full flex-wrap justify-center flex gap-4 items-center mx-4">
+            {hasData ? (
+              info.data?.map((e: TaskBodyProps, index: number) => (
+                <TaskCard
+                  key={e._id || index}
+                  title={e.title}
+                  status={e.completed}
+                  createdAt={e.createdAt}
+                  onCheckClick={() => handleCheckChange(e)}
+                  onEditClick={() => handleEditClick(e)}
+                  onDeleteClick={() => handleDeleteClick(e)}
+                  description={e.description}
+                />
+              ))
+            ) : (
+              <NoResults />
+            )}
+          </div>
+          {hasData && (
+            <Pagination
+              currentPage={page}
+              totalPages={totalPages}
+              onPageChange={changeView}
+              totalItems={info.totalItems}
+            />
           )}
         </div>
-        {hasData && (
-          <Pagination
-            currentPage={page}
-            totalPages={totalPages}
-            onPageChange={changeView}
-            totalItems={info.totalItems}
-          />
-        )}
-      </div>
+      }
       <Modal
         isOpen={modalState.isOpen}
         title="Task Management"

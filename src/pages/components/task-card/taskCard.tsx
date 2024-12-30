@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { TaskCardProps } from '../../../redux/types/types';
 import checkIcon from '../../../assets/svg/check-icon.svg'
 import pendingIcon from '../../../assets/svg/pending-icon.svg'
@@ -10,19 +10,23 @@ import trashIconYellow from '../../../assets/svg/trash-icon-yellow.svg'
 const TaskCard = ({ title, status, createdAt, onCheckClick, onEditClick, onDeleteClick, description }: TaskCardProps) => {
     const [isChecked, setIsChecked] = useState(status);
 
+    useEffect(() => {
+        setIsChecked(status);
+    }, [status]);
+
     const handleCheckboxChange = () => {
       setIsChecked(!isChecked);
       onCheckClick(!isChecked);
     };
 
     const handleEditClick = () => {
-        onEditClick(!isChecked);
+        onEditClick();
       };
 
     const handleDeleteClick= () => {
-        onDeleteClick(!isChecked);
+        onDeleteClick();
     };
-
+    console.log(status)
   return (
     <div className={`w-full flex flex-col items-center lg:max-w-[350px] text-[14px] gap-y-2
     bg-white rounded-2xl h-[150px] border-[1px] ${status ? 'border-[#d1f6d0]' : 'border-[#ffeac9]'}`}>
@@ -48,11 +52,11 @@ const TaskCard = ({ title, status, createdAt, onCheckClick, onEditClick, onDelet
                 {description && description?.length > 100 ? `${description?.slice(0, 100)}...` : description}
             </p>
         </div>
-
         <div className="flex flex-row items-start justify-between w-full px-4 text-[12px]">
             <div className='w-full flex flex-row gap-2'>
                 <p className='text-[#858c90]'>{new Date(createdAt).toLocaleDateString()}</p>
             </div>
+
             <input
                 type="checkbox"
                 checked={isChecked}

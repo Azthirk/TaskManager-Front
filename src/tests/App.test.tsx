@@ -1,6 +1,6 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import Header from '../pages/components/header/header';
-import Card from '../pages/components/card/card'
+import TaskCard from '../pages/components/task-card/taskCard'
 
 test('renders learn in header "Task Manager"', () => {
   render(<Header onFilterChange={() => {}} onEditClick={() => {}} />);
@@ -10,7 +10,7 @@ test('renders learn in header "Task Manager"', () => {
 
 test('renders task title correctly', () => {
   render(
-    <Card
+    <TaskCard
       title="Test Task"
       status={false}
       createdAt="30/12/24"
@@ -25,7 +25,7 @@ test('renders task title correctly', () => {
 
 test('shows "Completed" when status is true', () => {
   render(
-    <Card
+    <TaskCard
       title="Test Task"
       status={true}
       createdAt="30/12/24"
@@ -40,7 +40,7 @@ test('shows "Completed" when status is true', () => {
 
 test('shows correct edit icon based on status', () => {
   render(
-    <Card
+    <TaskCard
       title="Test Task"
       status={true}
       createdAt="30/12/24"
@@ -57,7 +57,7 @@ test('calls onCheckClick when checkbox is clicked', () => {
   const onCheckClickMock = jest.fn();
   
   render(
-    <Card
+    <TaskCard
       title="Test Task"
       status={false}
       createdAt="30/12/24"
@@ -78,7 +78,7 @@ test('calls onEditClick when edit icon is clicked', () => {
   const onEditClickMock = jest.fn();
 
   render(
-    <Card
+    <TaskCard
       title="Test Task"
       status={false}
       createdAt="30/12/24"
@@ -98,7 +98,7 @@ test('calls onDeleteClick when delete icon is clicked', () => {
   const onDeleteClickMock = jest.fn();
 
   render(
-    <Card
+    <TaskCard
       title="Test Task"
       status={false}
       createdAt="30/12/24"
@@ -116,7 +116,7 @@ test('calls onDeleteClick when delete icon is clicked', () => {
 
 test('shows correct creation date', () => {
   render(
-    <Card
+    <TaskCard
       title="Test Task"
       status={false}
       createdAt="2024/12/30"
