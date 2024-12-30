@@ -26,7 +26,7 @@ const TaskCard = ({ title, status, createdAt, onCheckClick, onEditClick, onDelet
     const handleDeleteClick= () => {
         onDeleteClick();
     };
-    console.log(status)
+    
   return (
     <div className={`w-full flex flex-col items-center lg:max-w-[350px] text-[14px] gap-y-2
     bg-white rounded-2xl h-[150px] border-[1px] ${status ? 'border-[#d1f6d0]' : 'border-[#ffeac9]'}`}>
