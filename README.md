@@ -26,6 +26,7 @@ $ npm install
 Create a `.env` file in the root directory of the project. Make sure to include the following variables:
 ```
 REACT_APP_API_URL=<BACKEND_API_URL>
+REACT_APP_APP_ENV=PRODUCTION V 1.0
 ```
 
 ### 4. Run the application
