@@ -49,7 +49,15 @@ In the `package.json` file, you will find several scripts that you can run:
 
 ## Folder Structure
 - `src/`: Contains all the source code for the project.
-- `components/`: Reusable components such as cards, modal, and form.
+- `pages/`: Reusable components such as cards, modal, and form.
 - `redux/`: Redux configuration for state management.
+- `assets/svg/`: svg files.
 - `public/`: Static files.
+- `test/`: test app.
+
+## Preview
+![Captura de pantalla 2024-12-30 050007](https://github.com/user-attachments/assets/97ac9901-1f6e-448d-8bbe-3a75c8ccfb72)
+![Captura de pantalla 2024-12-30 050252](https://github.com/user-attachments/assets/3ce38a6b-6510-462b-8208-84bfb23989e2)
+
+
 
