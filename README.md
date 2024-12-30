@@ -3,7 +3,7 @@
 This project is the frontend of a task management application that allows you to create, edit, delete, and view tasks with pagination and filters.
 
 ## Link to the Deployed Application
-You can access the application at the following link: -
+You can access the application at the following link: [-](https://taskmanager-back-4rrw.onrender.com/api-docs/)
 
 ## Local Installation and Execution
 
