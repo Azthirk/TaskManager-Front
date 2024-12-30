@@ -61,7 +61,7 @@ const TaskCard = ({ title, status, createdAt, onCheckClick, onEditClick, onDelet
                 type="checkbox"
                 checked={isChecked}
                 onChange={handleCheckboxChange}
-                className="cursor-pointer accent-gray-50 h-5 w-5"
+                className="cursor-pointer lg:accent-gray-50 h-5 w-5"
             />
         </div>
     </div>
