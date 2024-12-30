@@ -25,7 +25,8 @@ const HomeComponent = () => {
 
   const { loading, info, error } = useSelector((state: RootState) => state.api);
   const totalPages = useSelector((state: RootState) => state.api.info?.totalPages);
-  const hasData = info?.data && info.data?.length > 0;
+  const hasData = info?.data;
+  const totalItems = info.totalItems > 0;
 
   useEffect(() => {
     setLoader(true); 
@@ -146,7 +147,7 @@ const HomeComponent = () => {
       : 
         <div className="flex w-full my-4 items-center justify-center flex-wrap">
           <div className="w-full flex-wrap justify-center flex gap-4 items-center mx-4">
-            {hasData ? (
+            {totalItems ? (
               info.data?.map((e: TaskBodyProps, index: number) => (
                 <TaskCard
                   key={e._id || index}
@@ -163,7 +164,7 @@ const HomeComponent = () => {
               <NoResults />
             )}
           </div>
-          {hasData && (
+          {totalItems && (
             <Pagination
               currentPage={page}
               totalPages={totalPages}
