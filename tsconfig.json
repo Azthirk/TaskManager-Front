@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "target": "ES6",                      // Establece el estándar de JS de salida
+    "module": "ESNext",                   // Usa módulos ES (más compatible con React)
+    "jsx": "react-jsx",                   // Configuración adecuada para React 17+
+    "strict": true,                        // Habilita todas las verificaciones estrictas de TypeScript
+    "esModuleInterop": true,              // Permite la importación de módulos comunes
+    "moduleResolution": "node",           // Resolución de módulos al estilo Node.js
+    "resolveJsonModule": true,            // Permite importar archivos JSON
+    "skipLibCheck": true,                 // Omite la comprobación de tipos de las librerías
+    "forceConsistentCasingInFileNames": true
+  },
+  "include": [
+    "src/**/*"                             // Asegúrate de incluir todos los archivos en la carpeta `src`
+  ]
+}
