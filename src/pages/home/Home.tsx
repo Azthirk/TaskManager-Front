@@ -26,7 +26,7 @@ const HomeComponent = () => {
   const { loading, info, error } = useSelector((state: RootState) => state.api);
   const totalPages = useSelector((state: RootState) => state.api.info?.totalPages);
   const hasData = info?.data;
-  const totalItems = info.totalItems > 0;
+  const totalItems = info?.totalItems > 0;
 
   useEffect(() => {
     setLoader(true); 
